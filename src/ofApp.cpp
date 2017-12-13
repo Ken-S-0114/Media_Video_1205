@@ -2,21 +2,23 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-  ofBackground(255,255,255);
+//  ofBackground(255,255,255);
   ofSetVerticalSync(true);
   frameByframe = false;
   
   gui.setup(); // most of the time you don't need a name
   
-  gui.add(sigma.setup("sigma", ofVec2f(100, 100), ofVec2f(0, 0), ofVec2f(100, 100)));
-  gui.add(center.setup("center", ofVec2f(100, 100), ofVec2f(0, 0), ofVec2f(100, 100)));
+  gui.add(sigma.setup("Sigma (x, y)", ofVec2f(15, 10), ofVec2f(0, 0), ofVec2f(100, 100)));
+  gui.add(center.setup("Center (x, y)", ofVec2f(30, 25), ofVec2f(0, 0), ofVec2f(100, 100)));
+  gui.add(threnum.setup("Threshold", 128, 0, 255));
+  gui.add(elementnum.setup("Element Size", 6, 0, 15));
+  gui.add(morphologyIteration.setup("Iteration", 2, 0, 15));
   
   bHide = false;
   
-  // Uncomment this to show movies with alpha channels
-  // fingerMovie.setPixelFormat(OF_PIXELS_RGBA);
-  
   eyeVideo.load("movies/MyMovie2017-12-05-16-35-55-017.mp4");
+//  eyeVideo.load("movies/MyMovie2017-12-05-16-49-31-7527.mp4");
+  
   eyeVideo.setLoopState(OF_LOOP_NORMAL);
 
   eyeVideo.play();
@@ -30,8 +32,14 @@ void ofApp::update(){
   // グレースケールに変換する
   cvtColor(eyeMat, gray_eyeMat, CV_RGB2GRAY);
   mask = createMask(sigma->x, sigma->y, gray_eyeMat.cols/2, gray_eyeMat.rows, center->x, center->y);
-
   cv::add(gray_eyeMat, mask, eyeOnly);
+  cv::threshold(eyeOnly, thre_img, threnum, 255, 0);
+  
+  cv::Mat element = getStructuringElement(cv::MORPH_RECT,
+                                          cv::Size(2 * elementnum + 1, 2 * elementnum + 1),
+                                          cv::Point(elementnum, elementnum));
+  cv::erode(thre_img, Iteration_img, element, cv::Point(-1, -1), morphologyIteration);
+  cv::dilate(Iteration_img, Iteration_img, element, cv::Point(-1, -1), morphologyIteration);
 }
 
 //--------------------------------------------------------------
@@ -42,9 +50,11 @@ void ofApp::draw(){
 
   ofxCv::drawMat(mask, 20, 70);
   ofxCv::drawMat(eyeOnly, 20, 120);
+  ofxCv::drawMat(thre_img, 20, 170);
+  ofxCv::drawMat(Iteration_img, 20, 220);
   
-  ofSetHexColor(0x000000);
-  ofPixels & pixels = eyeVideo.getPixels();
+//  ofSetHexColor(0x000000);
+//  ofPixels & pixels = eyeVideo.getPixels();
   
   if(!bHide){
     gui.draw();

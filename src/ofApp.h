@@ -29,14 +29,19 @@ public:
   ofVideoPlayer     eyeVideo;
   bool              frameByframe;
   bool bHide;
+  int morphologySize; // 使用したカーネルのサイズ
   
   cv::Mat createMask(float sx, float sy, int width, int height, double centerX, double centerY);
   cv::Mat mask;
   cv::Mat eyeMat, gray_eyeMat, eyeOnly;
+  cv::Mat thre_img, Iteration_img;
+  cv::Mat element;
   
   ofxPanel gui;
   ofxVec2Slider sigma;
   ofxVec2Slider center;
-;
+  ofxFloatSlider threnum;
+  ofxIntSlider morphologyIteration, elementnum;
+
   
 };
