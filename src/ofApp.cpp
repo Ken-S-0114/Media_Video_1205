@@ -1,10 +1,13 @@
 #include "ofApp.h"
 
+using namespace cv;
+
 //--------------------------------------------------------------
 void ofApp::setup(){
-//  ofBackground(255,255,255);
+
   ofSetVerticalSync(true);
   frameByframe = false;
+  bHide = false;
   
   gui.setup(); // most of the time you don't need a name
   
@@ -14,13 +17,10 @@ void ofApp::setup(){
   gui.add(elementnum.setup("Element Size", 6, 0, 15));
   gui.add(morphologyIteration.setup("Iteration", 2, 0, 15));
   
-  bHide = false;
-  
-  eyeVideo.load("movies/MyMovie2017-12-05-16-35-55-017.mp4");
-//  eyeVideo.load("movies/MyMovie2017-12-05-16-49-31-7527.mp4");
+  eyeVideo.load("movies/MyMovie.mp4");
+
   
   eyeVideo.setLoopState(OF_LOOP_NORMAL);
-
   eyeVideo.play();
 }
 
@@ -28,18 +28,26 @@ void ofApp::setup(){
 void ofApp::update(){
   eyeVideo.update();
   
-  cv::Mat eyeMat = ofxCv::toCv(eyeVideo);
+  Mat eyeMat = ofxCv::toCv(eyeVideo);
   // グレースケールに変換する
   cvtColor(eyeMat, gray_eyeMat, CV_RGB2GRAY);
   mask = createMask(sigma->x, sigma->y, gray_eyeMat.cols/2, gray_eyeMat.rows, center->x, center->y);
-  cv::add(gray_eyeMat, mask, eyeOnly);
-  cv::threshold(eyeOnly, thre_img, threnum, 255, 0);
+  add(gray_eyeMat, mask, eyeOnly);
+  threshold(eyeOnly, thre_img, threnum, 255, 0);
   
-  cv::Mat element = getStructuringElement(cv::MORPH_RECT,
+  Mat element = getStructuringElement(cv::MORPH_RECT,
                                           cv::Size(2 * elementnum + 1, 2 * elementnum + 1),
                                           cv::Point(elementnum, elementnum));
-  cv::erode(thre_img, Iteration_img, element, cv::Point(-1, -1), morphologyIteration);
-  cv::dilate(Iteration_img, Iteration_img, element, cv::Point(-1, -1), morphologyIteration);
+  erode(thre_img, Iteration_img, element, cv::Point(-1, -1), morphologyIteration);
+  dilate(Iteration_img, Iteration_img, element, cv::Point(-1, -1), morphologyIteration);
+  
+//  threshold(Iteration_img, Iterationimg, 0.0, 255.0, CV_THRESH_BINARY_INV | CV_THRESH_OTSU);
+  Mat Iterationimg;
+  threshold(Iteration_img, Iterationimg, 0.0, 255.0, CV_THRESH_BINARY | CV_THRESH_OTSU);
+ 
+  
+  circle_img = processImage(Iterationimg);
+  
 }
 
 //--------------------------------------------------------------
@@ -52,14 +60,11 @@ void ofApp::draw(){
   ofxCv::drawMat(eyeOnly, 20, 120);
   ofxCv::drawMat(thre_img, 20, 170);
   ofxCv::drawMat(Iteration_img, 20, 220);
-  
-//  ofSetHexColor(0x000000);
-//  ofPixels & pixels = eyeVideo.getPixels();
+  ofxCv::drawMat(circle_img, 20, 270);
   
   if(!bHide){
     gui.draw();
   }
-  
 }
 
 //--------------------------------------------------------------
@@ -124,10 +129,10 @@ void ofApp::mouseReleased(int x, int y, int button){
   }
 }
 //--------------------------------------------------------------
-cv::Mat ofApp::createMask(float sx, float sy, int width, int height, double centerX, double centerY)
+Mat ofApp::createMask(float sx, float sy, int width, int height, double centerX, double centerY)
 {
-  cv::Mat eye(height, width, CV_8UC1);
-  cv::Mat kernel(height, width, CV_64F);
+  Mat eye(height, width, CV_8UC1);
+  Mat kernel(height, width, CV_64F);
 
   // Calculate the normal distribution
   for (int i = 0; i < height; i++)
@@ -142,20 +147,55 @@ cv::Mat ofApp::createMask(float sx, float sy, int width, int height, double cent
      }
 
   // Normalize
-  cv::normalize(kernel, eye, 0, 255, cv::NORM_MINMAX, CV_8UC1);
-  cv::hconcat(eye, eye, eye);
+  normalize(kernel, eye, 0, 255, cv::NORM_MINMAX, CV_8UC1);
+  hconcat(eye, eye, eye);
   
   // Invert color
-  cv::bitwise_not(eye, eye);
+  bitwise_not(eye, eye);
+  
   return eye;
 }
 
+//--------------------------------------------------------------
+Mat ofApp::processImage(Mat img){
+  
+  vector<vector<cv::Point>> contours;
+  findContours(img, contours, RETR_LIST, CHAIN_APPROX_NONE);
+  Mat cimage = Mat::zeros(img.size(), CV_8UC3);
+  
+  for(size_t i = 0; i < contours.size(); i++)
+  {
+    if (contours[i][0].x == 1 || contours[i][0].y == 1)
+      continue;
+    
+    size_t count = contours[i].size();
+    if(count < 6)
+      continue;
+  
+    Mat pointsf;
+    Mat(contours[i]).convertTo(pointsf, CV_32F);
+    RotatedRect box = fitEllipse(pointsf);
+    if( MAX(box.size.width, box.size.height) > MIN(box.size.width, box.size.height)*30 )
+      continue;
+    
+    drawContours(cimage, contours, (int)i, Scalar::all(255), 1, 8);
+    
+    ellipse(cimage, box, cvScalar(0,0,255), 1, CV_AA);
+    ellipse(cimage, box.center, box.size*0.5f, box.angle, 0, 360, cvScalar(0.0,255.0,255.0), 1, CV_AA);
+//    Point2f vtx[4];
+//    box.points(vtx);
+    
+//    for( int j = 0; j < 4; j++ )
+//      line(cimage, vtx[j], vtx[(j+1)%4], cvScalar(0.0,255.0,0.0), 1, CV_AA);
+  }
+  
+  return cimage;
+}
 
 //--------------------------------------------------------------
 void ofApp::mouseEntered(int x, int y){
   
 }
-
 //--------------------------------------------------------------
 void ofApp::mouseExited(int x, int y){
   
