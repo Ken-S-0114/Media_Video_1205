@@ -8,7 +8,7 @@
 using namespace cv;
 
 class ofApp : public ofBaseApp {
-
+  
 public:
   
   void setup();
@@ -27,25 +27,19 @@ public:
   void dragEvent(ofDragInfo dragInfo);
   void gotMessage(ofMessage msg);
   
-  Mat processImage(Mat img);
-  
   ofVideoPlayer     eyeVideo;
   bool              frameByframe;
-  bool bHide;
+  bool              bHide;
   int morphologySize; // 使用したカーネルのサイズ
   
+  Mat eyeMat, mask, gray_eyeMat, blackEyeMat, thre_img, Iteration_img, Iteration_img2, circle_img;
   Mat createMask(float sx, float sy, int width, int height, double centerX, double centerY);
-  Mat mask;
-  Mat eyeMat, gray_eyeMat, eyeOnly;
-  Mat thre_img, Iteration_img, circle_img;
-  Mat element;
-
+  tuple<Mat, vector<cv::Point>> processImage(Mat img);
+  vector<cv::Point> eyeCenters;
   
   ofxPanel gui;
-  ofxVec2Slider sigma;
-  ofxVec2Slider center;
+  ofxVec2Slider sigma, center;
   ofxFloatSlider threnum;
   ofxIntSlider morphologyIteration, elementnum;
-
   
 };

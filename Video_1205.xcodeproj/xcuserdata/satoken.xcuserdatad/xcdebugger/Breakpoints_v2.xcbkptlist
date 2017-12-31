@@ -2,4 +2,219 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../libs/openFrameworks/math/ofMatrix4x4.h"
+            timestampString = "536244004.764465"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
+            landmarkName = "ofMatrix4x4"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ofMatrix4x4::operator()(unsigned long, unsigned long)"
+                  moduleName = "Video_1205Debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/satoken/Desktop/of_v0.9.8_osx_release/apps/myApps/Video_1205/../../../libs/openFrameworks/math/ofMatrix4x4.h"
+                  timestampString = "536242104.803754"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "320"
+                  endingLineNumber = "320"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ofCairoRenderer::multMatrix(ofMatrix4x4 const&amp;)"
+                  moduleName = "Video_1205Debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/satoken/Desktop/of_v0.9.8_osx_release/libs/openFrameworksCompiled/project/osx/../../../../libs/openFrameworks/math/ofMatrix4x4.h"
+                  timestampString = "536242104.80678"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "534"
+                  endingLineNumber = "534"
+                  offsetFromSymbolStart = "69">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ofCairoRenderer::multMatrix(ofMatrix4x4 const&amp;)"
+                  moduleName = "Video_1205Debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/satoken/Desktop/of_v0.9.8_osx_release/libs/openFrameworksCompiled/project/osx/../../../../libs/openFrameworks/math/ofMatrix4x4.h"
+                  timestampString = "536242104.810493"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "534"
+                  endingLineNumber = "534"
+                  offsetFromSymbolStart = "160">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ofCairoRenderer::multMatrix(float const*)"
+                  moduleName = "Video_1205Debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/satoken/Desktop/of_v0.9.8_osx_release/libs/openFrameworksCompiled/project/osx/../../../../libs/openFrameworks/math/ofMatrix4x4.h"
+                  timestampString = "536242104.813448"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "534"
+                  endingLineNumber = "534"
+                  offsetFromSymbolStart = "139">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ofCairoRenderer::multMatrix(float const*)"
+                  moduleName = "Video_1205Debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/satoken/Desktop/of_v0.9.8_osx_release/libs/openFrameworksCompiled/project/osx/../../../../libs/openFrameworks/math/ofMatrix4x4.h"
+                  timestampString = "536242104.816346"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "534"
+                  endingLineNumber = "534"
+                  offsetFromSymbolStart = "169">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ofNode::setParent(ofNode&amp;, bool)"
+                  moduleName = "Video_1205Debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/satoken/Desktop/of_v0.9.8_osx_release/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/math/ofMatrix4x4.h"
+                  timestampString = "536242104.819207"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "543"
+                  endingLineNumber = "543"
+                  offsetFromSymbolStart = "118">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ofNode::getGlobalTransformMatrix() const"
+                  moduleName = "Video_1205Debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/satoken/Desktop/of_v0.9.8_osx_release/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/math/ofMatrix4x4.h"
+                  timestampString = "536242104.8252"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "543"
+                  endingLineNumber = "543"
+                  offsetFromSymbolStart = "87">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ofNode::setGlobalOrientation(ofQuaternion const&amp;)"
+                  moduleName = "Video_1205Debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/satoken/Desktop/of_v0.9.8_osx_release/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/math/ofMatrix4x4.h"
+                  timestampString = "536242104.829851"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "543"
+                  endingLineNumber = "543"
+                  offsetFromSymbolStart = "166">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ofMatrixStack::setOrientation(ofOrientation, bool)"
+                  moduleName = "Video_1205Debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/satoken/Desktop/of_v0.9.8_osx_release/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/math/ofMatrix4x4.h"
+                  timestampString = "536242104.833086"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "543"
+                  endingLineNumber = "543"
+                  offsetFromSymbolStart = "307">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ofMatrixStack::setOrientation(ofOrientation, bool)"
+                  moduleName = "Video_1205Debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/satoken/Desktop/of_v0.9.8_osx_release/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/math/ofMatrix4x4.h"
+                  timestampString = "536242104.837514"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "543"
+                  endingLineNumber = "543"
+                  offsetFromSymbolStart = "455">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ofMatrixStack::updatedRelatedMatrices()"
+                  moduleName = "Video_1205Debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/satoken/Desktop/of_v0.9.8_osx_release/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/math/ofMatrix4x4.h"
+                  timestampString = "536242104.840726"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "543"
+                  endingLineNumber = "543"
+                  offsetFromSymbolStart = "86">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ofMatrixStack::updatedRelatedMatrices()"
+                  moduleName = "Video_1205Debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/satoken/Desktop/of_v0.9.8_osx_release/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/math/ofMatrix4x4.h"
+                  timestampString = "536242104.843962"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "543"
+                  endingLineNumber = "543"
+                  offsetFromSymbolStart = "169">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ofMatrixStack::updatedRelatedMatrices()"
+                  moduleName = "Video_1205Debug"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/satoken/Desktop/of_v0.9.8_osx_release/libs/openFrameworksCompiled/project/osx/../../../openFrameworks/math/ofMatrix4x4.h"
+                  timestampString = "536242104.847105"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "543"
+                  endingLineNumber = "543"
+                  offsetFromSymbolStart = "317">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
